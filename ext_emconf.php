@@ -10,7 +10,8 @@ $EM_CONF['jv_deepltranslate_piflexform'] = [
     'version' => '12.4.0',
     'constraints' => [
         'depends' => [
-            'wv_deepltranslate' => '4.3.0-4.4.99'
+            'wv_deepltranslate' => '4.3.0-4.4.99',
+            'typo3' => '11.4.0-12.4.99'
         ],
         'conflicts' => [],
         'suggests' => [],

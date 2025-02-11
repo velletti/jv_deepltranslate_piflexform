@@ -103,6 +103,7 @@ git push --tags
 create new zip file:
 cd vendor/jvelletti/jv-deepltranslate-piflexform
 git archive -o jv_deepltranslate_piflexform_x.y.z.zip" HEAD
+git archive -o jv_deepltranslate_piflexform_12.4.0.zip" HEAD
 
 Upload ZIP File to https://extensions.typo3.org/my-extensions
 git push
