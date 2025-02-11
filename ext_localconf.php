@@ -17,6 +17,9 @@ if (!defined('TYPO3')) {
        'settings.content1'           => [],
        'settings.content2'           => [],
        'settings.content3'           => [],
+       'settings.contentafterimages'    => [],
+       'settings.contentMiddle'    => [],
+       'settings.contentBottom'    => [],
 
        'settings.headline'           => [],
        'settings.headlineColumns'    => [],

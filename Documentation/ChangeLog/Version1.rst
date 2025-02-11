@@ -15,6 +15,13 @@ For details have a look at the Github commits: https://github.com/velletti/jv_de
 
 12.4.0 - first working version
 12.4.1 - add dependency to ext_emconf.php for TER
+12.4.2 - adding new Fields: settings.contentafterimage  contentBottom contentMiddle  to default config
+
+To Do
+-----
+
+   * find option to add fields to default config by extension configuration or typoscript
+   * update documentation
 
 
 Breaking changes
