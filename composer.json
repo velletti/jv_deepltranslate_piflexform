@@ -1,0 +1,28 @@
+{
+    "name": "jvelletti/jv-deepltranslate-piflexform",
+    "type": "typo3-cms-extension",
+    "description": "Extends the extension wv_deepltranslate to handle translations of flexforms.",
+    "authors": [
+        {
+            "name": "Jörg Velletti",
+            "email": "typo3@velletti.de"
+        }
+    ],
+    "license": [
+        "GPL-3.0-or-later"
+    ],
+    "require": {
+        "typo3/cms-core": "^11.5 || ^12.4",
+        "web-vision/deepltranslate-core": "^4.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jvelletti\\JvDeepltranslatePiflexform\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "jv_deepltranslate_piflexform"
+        }
+    }
+}

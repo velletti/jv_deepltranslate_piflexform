@@ -1,0 +1,8 @@
+<svg width="128" height="128" xmlns="http://www.w3.org/2000/svg">
+  <rect width="96%" height="96%" x="2%" y="2%" fill="transparent" stroke="darkblue" stroke-width="3px"/>
+  <text x="50%" y="20%" font-family="Arial" font-size="20" fill="darkblue" text-anchor="middle" dominant-baseline="middle">EN</text>
+  <text x="50%" y="80%" font-family="Arial" font-size="20" fill="darkblue" text-anchor="middle" dominant-baseline="middle">DE</text>
+  <text x="50%" y="50%" font-family="Arial" font-size="44" fill="darkblue" text-anchor="middle" dominant-baseline="middle">
+  &lt;xml&gt;
+  </text>
+</svg>
