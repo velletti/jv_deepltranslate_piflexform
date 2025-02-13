@@ -18,7 +18,7 @@ translate also pi_flexform fields via DeepL
   jv_deepltranslate_piflexform
 
 :Version:
-  12.4.2
+  12.4.3
 
 :Language:
   en
