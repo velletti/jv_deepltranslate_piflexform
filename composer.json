@@ -13,7 +13,7 @@
     ],
     "require": {
         "typo3/cms-core": "^11.5 || ^12.4",
-        "web-vision/deepltranslate-core": "^4.4 || ^5.*"
+        "web-vision/deepltranslate-core": "^4.4 || ^5.0"
     },
     "autoload": {
         "psr-4": {
