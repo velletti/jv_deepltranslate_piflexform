@@ -9,6 +9,9 @@ defined('TYPO3') || die();
 
 // sys_category
 $GLOBALS['TCA']['sys_category']['columns']['title']['l10n_mode'] = 'prefixLangTitle';
+$GLOBALS['TCA']['pages']['columns']['title']['l10n_mode'] = 'prefixLangTitle';
+$GLOBALS['TCA']['pages']['columns']['nav_title']['l10n_mode'] = 'prefixLangTitle';
+$GLOBALS['TCA']['pages']['columns']['subtitle']['l10n_mode'] = 'prefixLangTitle';
 
 // tt_address
 if ( isset( $GLOBALS['TCA']['tt_address'])) {
