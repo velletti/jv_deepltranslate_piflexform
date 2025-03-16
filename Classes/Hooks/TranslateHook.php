@@ -33,7 +33,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 
 use Exception;
-use WebVision\WvDeepltranslate\Service\ProcessingInstruction;
 
 class TranslateHook
 {
@@ -58,14 +57,26 @@ class TranslateHook
      */
     protected int $targetLanguageUid;
 
-    private ClientInterface $client;
-    private ProcessingInstruction $processingInstruction;
+    private $client;
 
     public function __construct(
     ) {
-        $config = GeneralUtility::makeInstance(\WebVision\WvDeepltranslate\Configuration::class);
 
-        $this->client = GeneralUtility::makeInstance(\WebVision\WvDeepltranslate\Client::class, $config);
+        if ( \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('wv_deepltranslate') ) {
+            $config = GeneralUtility::makeInstance(\WebVision\WvDeepltranslate\Configuration::class);
+
+            /** @var \WebVision\WvDeepltranslate\ClientInterface $client */
+            $this->client = GeneralUtility::makeInstance(\WebVision\WvDeepltranslate\Client::class, $config);
+
+        } else if ( \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('deepltranslate_core') ) {
+            $config = GeneralUtility::makeInstance(\WebVision\Deepltranslate\Core\Configuration::class);
+
+            /** @var \WebVision\Deepltranslate\Core\ClientInterface $client */
+            $this->client = GeneralUtility::makeInstance(\WebVision\Deepltranslate\Core\Client::class, $config);
+        }
+
+
+
     }
     /**
      * Getters and setters
