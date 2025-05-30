@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2025-05-30T10:05:49Z">
+    <body>
+      <trans-unit id="a.exists.translated" resname="a.exists.translated" approved="yes">
+        <source>I am translated</source>
+        <target>ich bin übersetzt</target>
+      </trans-unit>
+      <trans-unit id="b.exists.untranslated" resname="b.exists.untranslated" approved="yes">
+        <source>I am untranslated</source>
+        <target>Ich bin unübersetzt</target>
+      </trans-unit>
+      <trans-unit id="c.exists.outdatedSource" resname="c.exists.outdatedSource" approved="yes">
+        <source>New Source</source>
+        <target>Neue Quelle</target>
+      </trans-unit>
+      <trans-unit id="d.missing" resname="d.missing" approved="yes">
+        <source>Missing complete</source>
+        <target>Fehlt vollständig</target>
+      </trans-unit>
+      <trans-unit id="e.exists.emptytarget" resname="e.exists.emptytarget" approved="yes">
+        <source>my target is empty</source>
+        <target>mein Ziel ist leer</target>
+      </trans-unit>
+      <trans-unit id="c.exists.noSource" resname="c.exists.noSource" approved="yes">
+        <source>Translate without Source entry in target, but exitst in default</source>
+        <target>Übersetzt ohne Source, but in default</target>
+      </trans-unit>
+      <trans-unit id="c.notexists.noSource" resname="c.notexists.noSource" approved="yes">
+        <source/>
+        <target>Ohne Source Eintrag</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

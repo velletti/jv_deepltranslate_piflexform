@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2025-05-30T09:02:35Z">
+    <body>
+      <trans-unit id="a.exists.translated" resname="a.exists.translated" >
+        <source>I am translated</source>
+        <target>ich bin übersetzt</target>
+      </trans-unit>
+      <trans-unit id="b.exists.untranslated" resname="b.exists.untranslated" approved="yes">
+        <source>I am untranslated</source>
+      </trans-unit>
+      <trans-unit id="c.exists.outdatedSource" resname="c.exists.outdatedSource" approved="yes">
+        <source>outdated Source</source>
+        <target>Neue Quelle</target>
+      </trans-unit>
+      <trans-unit id="e.exists.emptytarget" resname="e.exists.emptytarget">
+        <source>my target is empty</source>
+        <target></target>
+      </trans-unit>
+      <trans-unit id="c.notexists.noSource" approved="yes">
+        <target>Ohne Source Eintrag</target>
+      </trans-unit>
+        <trans-unit id="c.exists.noSource" approved="yes">
+           <target>Übersetzt ohne Source, but in default</target>
+       </trans-unit>
+    </body>
+  </file>
+</xliff>

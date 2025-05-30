@@ -1,0 +1,5 @@
+*.locallang.xlf
+*.locallang.*.xlf
+
+!de.locallang.xlf
+!locallang.xlf

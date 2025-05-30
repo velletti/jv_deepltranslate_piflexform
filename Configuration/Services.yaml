@@ -6,3 +6,9 @@ services:
 
   Jvelletti\JvDeepltranslatePiflexform\:
     resource: '../Classes/*'
+
+  Jvelletti\JvDeepltranslatePiflexform\Command\TranslateCommand:
+    tags:
+      - name: 'console.command'
+        command: 'jvelletti:translate'
+        schedulable: true
