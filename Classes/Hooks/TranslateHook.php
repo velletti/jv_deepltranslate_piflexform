@@ -183,7 +183,7 @@ class TranslateHook
      * @see http/typo3/sysext/core/Classes/DataHandling/DataHandler.php->checkValueForFlex()
      * @see http/typo3/sysext/extbase/Classes/Hook/DataHandler/CheckFlexFormValue.php->checkFlexFormValue_beforeMerge()
      */
-    public function checkFlexFormValue_beforeMerge(DataHandler $dataHandler, array &$currentValue, array &$newValue)
+    public function checkFlexFormValue_beforeMerge(DataHandler $dataHandler, array &$currentValue, array &$newValue): void
     {
 
         // We only want to execute this function, if a deepl function of EXT:wv_deepltranslate is used
@@ -268,7 +268,7 @@ class TranslateHook
     }
     private function getServityERROR()
     {
-        return \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR;
+        return \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR;
         // return ContextualFeedbackSeverity::ERROR;
     }
 
