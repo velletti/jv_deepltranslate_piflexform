@@ -86,6 +86,25 @@ if (!defined('TYPO3')) {
              'alternativeText4',
           ],
        ],
+        'column0' => [
+            'headline_columns'            => [],
+            'headline_table'            => [],
+        ],
+        'column1' => [
+            'headline_column1'            => [],
+        ] ,
+        'column2' => [
+            'headline_column2'            => [],
+        ],
+        'column3' => [
+            'headline_column3'            => [],
+        ],
+        'column4' => [
+            'headline_column4'            => [],
+        ],
+        'column5' => [
+            'headline_column5'            => [],
+        ]
     ];
 
 })();
