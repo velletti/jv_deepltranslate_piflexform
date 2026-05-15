@@ -51,13 +51,13 @@ class TranslateCommand extends Command {
             ->addArgument(
                 'target',
                 null ,
-                'target language, like "de" or "it" or "all" for all languages'
+                'target language, like "de" or "it" '
             )->addOption(
                 'wait',
                 'w',
                 InputOption::VALUE_OPTIONAL,
-                'Wait time when executing deepl translate in seconds. needed for the DeepL API to process the request. Default is 5 seconds.',
-                5
+                'Wait time when executing deepl translate in seconds. needed for the DeepL API to process the request. Default is 3 seconds.',
+                3
             )->addOption(
                 'ext',
                 'e',
@@ -119,13 +119,15 @@ class TranslateCommand extends Command {
             $source = (string)trim($input->getArgument('source')) ;
             $io->writeln('File to translate from: '. $source );
         } else {
-            $io->error('No source file given, use --source option');
-            return 1;
+            $source = 'locallang.xlf' ;
+            $io->writeln('using default locallang.xlf, use --source=locallang_txt.xlf option to overwrite this' );
         }
         if ($input->getOption('ext') ) {
             $io->writeln('Got extension key: '. (string)$input->getOption('ext') );
                 $source = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath( (string)$input->getOption('ext')) . 'Resources/Private/Language/' . $source;
                 $io->writeln('Search Source file in extension path: '. $source );
+        } else {
+            $io->writeln('No extension key given via --ext=xxx, searching source file in current path: '. $source );
         }
 
         // check if source file exists
@@ -275,7 +277,8 @@ class TranslateCommand extends Command {
                 sleep($this->wait);
                 continue;
             }
-            $io->writeln("<success>Translation for ID: " . $id . " en= '" . $sourceText . "' 
+            $io->writeln("<success>Translation for ID: " . $id . " from 
+            en= '" . $sourceText . "' 
             to " . $targetLanguage . "= '" . $translatedText . "</success>'");
 
             sleep($this->wait);
