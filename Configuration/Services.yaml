@@ -18,3 +18,5 @@ services:
       - name: 'event.listener'
         identifier: 'jv-deepltranslate/config'
         event: TYPO3\CMS\Backend\Backend\Event\SystemInformationToolbarCollectorEvent
+
+  WebVision\Deepltranslate\Core\Event\Listener\UsageToolBarEventListener: ~

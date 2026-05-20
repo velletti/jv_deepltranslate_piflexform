@@ -9,6 +9,7 @@ use Psr\Log\LoggerAwareTrait;
 use TYPO3\CMS\Backend\Backend\Event\SystemInformationToolbarCollectorEvent;
 use TYPO3\CMS\Backend\Toolbar\Enumeration\InformationStatus;
 use TYPO3\CMS\Core\Localization\LanguageService;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use WebVision\Deepltranslate\Core\Exception\ApiKeyNotSetException;
 use WebVision\Deepltranslate\Core\Service\UsageService;
 
@@ -31,17 +32,39 @@ class ConfigToolBarEventListener implements LoggerAwareInterface
         //   $severity =  InformationStatus::STATUS_WARNING;
         //    $severity =  InformationStatus::STATUS_INFO;
         $severity =  InformationStatus::STATUS_NOTICE;
+        $BEutility = new \WebVision\Deepltranslate\Core\Utility\DeeplBackendUtility() ;
 
-        $title = "Deepl Config";
-        try {
-            $info =  $this->usageService->getCurrentUsage();
-
-            $message = var_export($info, true);
-        } catch (\Exception $e) {
-            $message = $e->getMessage();
+        $title = "Deepl Status: ";
+        $message = $BEutility->getApiKey() ? "API Key is set" : "API Key is missing";
+        if ( isset($GLOBALS['TYPO3_CONF_VARS']['HTTP']['auth']) && count($GLOBALS['TYPO3_CONF_VARS']['HTTP']['auth']) > 1 ) {
+            $message .= " | ERROR: HTTP Authentication is set !";
+            $severity = InformationStatus::STATUS_ERROR;
+        } else {
+            $message .= " | OK: HTTP Auth not set";
         }
+        try {
+            $usage =  $this->usageService->getCurrentUsage();
+            if ($usage === null || $usage->character === null) {
+                $message .= " | No usage information retrieve - " . var_export($usage , true);
+            } else {
+                // everthing is working ..
+                $title = "Deepl Config OK:";
+                $message = $this->getLanguageService()->sL(
+                    'LLL:EXT:deepltranslate_core/Resources/Private/Language/locallang.xlf:usages.toolbar.message'
+                );
 
+                $severity = $this->usageService->determineSeverityForSystemInformation($usage->character->count, $usage->character->limit);
 
+                $message =    sprintf(
+                    $message,
+                    $this->usageService->formatNumber($usage->character->count),
+                    $this->usageService->formatNumber($usage->character->limit)
+                ) ;
+            }
+        } catch (\Exception $e) {
+            $message = $message . " " . $e->getMessage();
+            $severity = InformationStatus::STATUS_ERROR;
+        }
 
         $systemInformation->getToolbarItem()->addSystemInformation(
             $title,
