@@ -12,3 +12,9 @@ services:
       - name: 'console.command'
         command: 'jvelletti:translate'
         schedulable: true
+
+  Jvelletti\JvDeepltranslatePiflexform\Event\Listener\ConfigToolBarEventListener:
+    tags:
+      - name: 'event.listener'
+        identifier: 'jv-deepltranslate/config'
+        event: TYPO3\CMS\Backend\Backend\Event\SystemInformationToolbarCollectorEvent
