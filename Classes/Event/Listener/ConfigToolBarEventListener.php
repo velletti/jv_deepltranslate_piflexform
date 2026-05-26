@@ -60,6 +60,12 @@ class ConfigToolBarEventListener implements LoggerAwareInterface
                     $this->usageService->formatNumber($usage->character->count),
                     $this->usageService->formatNumber($usage->character->limit)
                 ) ;
+
+                if ( isset(  $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['jv_deepltranslate_piflexform']['fieldsToTranslate'] )) {
+                    $message .= " | " . count( $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['jv_deepltranslate_piflexform']['fieldsToTranslate'] ) . " Flexform fields configured";
+                } else {
+                    $message .= " | Translation of FlexForms not configured !";
+                }
             }
         } catch (\Exception $e) {
             $message = $message . " " . $e->getMessage();
