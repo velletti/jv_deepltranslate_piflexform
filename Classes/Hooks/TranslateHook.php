@@ -11,12 +11,10 @@ use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Site\Entity\Site;
 use TYPO3\CMS\Core\Site\SiteFinder;
-use WebVision\WvDeepltranslate\ClientInterface;
-use WebVision\WvDeepltranslate\Domain\Repository\GlossaryRepository;
-use WebVision\WvDeepltranslate\Exception\LanguageIsoCodeNotFoundException as WvDeepltranslateLanguageIsoCodeNotFoundException;
-use WebVision\WvDeepltranslate\Exception\LanguageRecordNotFoundException as WvDeepltranslateLanguageRecordNotFoundException;
-use WebVision\WvDeepltranslate\Hooks\TranslateHook as WvDeepltranslateTranslateHook;
-use WebVision\WvDeepltranslate\Service\LanguageService;
+use WebVision\Deepltranslate\Core\ClientInterface;
+use WebVision\Deepltranslate\Core\Exception\LanguageRecordNotFoundException as WvDeepltranslateLanguageRecordNotFoundException;
+use WebVision\Deepltranslate\Core\Hooks\TranslateHook as WvDeepltranslateTranslateHook;
+use WebVision\Deepltranslate\Core\Service\LanguageService;
 
 /**
  * TYPO3
@@ -191,7 +189,7 @@ class TranslateHook
             return;
         }
         $action = $GLOBALS['TYPO3_REQUEST']->getQueryParams() ? $GLOBALS['TYPO3_REQUEST']->getQueryParams()['action'] : '';
-        if (!in_array($action, ['localizedeepl', 'localizedeeplauto'])) {
+        if (!in_array($action, ['localizedeepl', 'localizedeeplauto' , 'deepltranslate' , 'deepltranslateauto'])) {
             return;
         }
         try {
@@ -216,7 +214,6 @@ class TranslateHook
         if (!isset($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['jv_deepltranslate_piflexform']['fieldsToTranslate'])) {
             return;
         }
-
         $flexFormFieldsToTranslate =  $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['jv_deepltranslate_piflexform']['fieldsToTranslate'] ;
 
         // Loop through the defined flexform fields
@@ -269,7 +266,6 @@ class TranslateHook
     private function getServityERROR()
     {
         return \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR;
-        // return ContextualFeedbackSeverity::ERROR;
     }
 
     /**
@@ -306,7 +302,6 @@ class TranslateHook
             );
             $sourceLanguage = ($sourceLanguageRecord['language_isocode'] ?? false) ;
 
-            // Get target language record (from EXT:wv_deepltranslate)
             $targetLanguageRecord = $languageService->getTargetLanguage(
                $siteInformation,
                $targetLanguageUid
@@ -317,7 +312,7 @@ class TranslateHook
                 return $content ;
             }
 
-        } catch (WvDeepltranslateLanguageIsoCodeNotFoundException|WvDeepltranslateLanguageRecordNotFoundException $e) {
+        } catch (\Exception|WvDeepltranslateLanguageRecordNotFoundException $e) {
 
             throw new Exception($e->getMessage(), '1704792782');
 
