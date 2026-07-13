@@ -185,7 +185,7 @@ class TranslateHook
     {
 
         // We only want to execute this function, if a deepl function of EXT:wv_deepltranslate is used
-        if ( !$GLOBALS['TYPO3_REQUEST'] ) {
+        if ( !isset( $GLOBALS['TYPO3_REQUEST']) ) {
             return;
         }
         $action = $GLOBALS['TYPO3_REQUEST']->getQueryParams() ? $GLOBALS['TYPO3_REQUEST']->getQueryParams()['action'] : '';
